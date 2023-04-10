@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     root_path = Path(__file__).parent.parent
     nonmatching_nbs = []
-    fns = notebooks if notebooks else nb_paths(root_path)
+    fns = notebooks or nb_paths(root_path)
     for fn in fns:
         print(f"{'checking' if check else 'processing'} {fn}")
         nb = read_notebook(fn)
