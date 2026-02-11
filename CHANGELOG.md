@@ -1,3 +1,22 @@
+## 0.1.0
+* Migrate to native uv for package management, replacing pip and pip-compile
+* Replace black and flake8 with ruff for linting and formatting
+* Remove all version pins from dependencies, use uv.lock for reproducibility
+* Update Dockerfile, CI workflows, and Makefile to use uv throughout
+* Fix flaky Korean OCR test assertions for tesseract compatibility
+* Use `.python-version` file as single source of truth for Python version across all CI workflows
+* Re-enable arm64 Docker image builds using a dedicated ARM runner (`opensource-linux-arm64-4core`), restoring multiarch support for both amd64 and arm64
+* Switch all CI workflows to faster self-hosted runners (`opensource-linux-8core`)
+* Split lint tools into a lightweight dependency group so the CI lint step no longer installs heavy runtime dependencies
+* Add explicit dependencies for `backoff`, `pandas`, `psutil`, `pypdf`, and `requests` (previously only transitive via `unstructured[all-docs]`)
+* Pre-download NLTK models before parallel test runs to prevent race conditions
+* Pin uv version in Dockerfile for reproducible builds
+* Remove `py3.12-pip` from Dockerfile (unused since uv migration)
+* Drop mypy from CI (ruff covers linting sufficiently)
+* Add retry logic to parallel-mode curl tests for transient connection failures
+* Switch Dependabot from `pip` to `uv` ecosystem
+* Remove unused `ARCH` variable from Makefile
+
 ## 0.0.93
 * Refactored the Dockerfile to use the chainguard/wolfi-base image instead of the unstructured/base-image. This is to align with the recent change in the unstructured repo where the same change was made.
 * upgraded dependancies to address CVEs
