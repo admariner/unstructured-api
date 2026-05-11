@@ -41,11 +41,14 @@ path = "prepline_general/api/__version__.py"
 [tool.uv]
 # Constraints for transitive dependencies that need pinning for functional reasons
 constraint-dependencies = [
-    # later versions of Starlette break middleware
-    "starlette==0.41.2",
     # pdfminer.six 20260107 includes performance fix
     "pdfminer-six==20260107",
 ]
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
 
 [tool.pyright]
 pythonPlatform = "Linux"
